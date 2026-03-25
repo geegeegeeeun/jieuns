@@ -14,8 +14,9 @@
   --top-offset: 68px;
   --nav-width: 280px;
   --nav-gap: 56px;
-  --content-start: clamp(340px, 29vw, 500px);
-  --intro-start: calc(var(--left-offset) + var(--nav-width) + var(--nav-gap));
+  --content-start: calc(50vw - var(--shell-left) - var(--left-offset));
+  --content-width: min(calc(50vw - var(--shell-left) - 48px), 58rem);
+  --intro-start: var(--content-start);
 }
 
 * {
@@ -24,7 +25,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 72px;
+  scroll-padding-top: 0;
 }
 
 body {
@@ -186,13 +187,12 @@ button {
 }
 
 .content-section {
-  min-height: 100vh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: grid;
   align-items: start;
   justify-items: stretch;
-  padding: 96px 0 48px;
+  padding: 72px 0 72px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -200,30 +200,45 @@ button {
   align-items: start;
   justify-items: stretch;
   padding-top: 0;
-  padding-left: var(--intro-start);
+  padding-left: 0;
 }
 
-.intro-stack {
-  width: 250px;
+.content-section-intro > .profile-orb,
+.content-section-intro > .intro-caption,
+.content-section-intro > .intro-contact {
   margin-left: var(--intro-start);
   align-self: start;
   justify-self: start;
+  margin-top: 20px;
 }
 
 .content-section-intro .profile-orb {
-  margin: 0;
-  align-self: start;
-  justify-self: start;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .intro-caption {
   width: 250px;
-  margin: 100px 0 0;
+  margin-top: 0;
+  margin-bottom: 0;
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: -0.04em;
-  line-height: 0.7;
+  line-height: 1.4;
   text-align: left;
+}
+
+.intro-contact {
+  width: 250px;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.intro-contact a {
+  color: var(--muted);
+  text-decoration: none;
 }
 
 .profile-orb {
@@ -253,7 +268,7 @@ button {
 
 .content-block {
   max-width: none;
-  width: min(50vw, 58rem);
+  width: var(--content-width);
   margin-left: var(--content-start);
   text-align: left;
 }
@@ -266,12 +281,18 @@ button {
   font-weight: 400;
 }
 
-.content-section p {
+.content-block p,
+.content-block ul,
+.content-block li,
+.content-block .news-link {
   margin: 0;
-  max-width: 52rem;
   color: var(--muted);
-  line-height: 1.8;
-  font-size: 1.02rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.content-block p {
+  max-width: 52rem;
 }
 
 .content-section p + p {
@@ -285,8 +306,14 @@ button {
   color: var(--muted);
 }
 
-.publication-list li {
-  line-height: 1.85;
+.publication-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.publication-link:hover,
+.publication-link:focus-visible {
+  cursor: pointer;
 }
 
 .publication-list li + li {
@@ -300,8 +327,6 @@ button {
 .news-link {
   color: inherit;
   text-decoration: none;
-  font-size: 1.15rem;
-  line-height: 1.7;
   border-bottom: 1px solid currentColor;
 }
 
@@ -309,12 +334,11 @@ button {
   :root {
     --nav-width: 240px;
     --nav-gap: 40px;
-    --content-start: clamp(190px, 21vw, 320px);
-    --intro-start: calc(var(--left-offset) + var(--nav-width) + var(--nav-gap));
+    --intro-start: var(--content-start);
   }
 
   .site-name {
-    left: var(--shell-left);
+    left: calc(var(--shell-left) + var(--left-offset));
   }
 
   .page-shell {
@@ -335,29 +359,25 @@ button {
   .content-section-bio {
     min-height: auto;
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 96px 0 40px;
+    padding: 72px 0 72px;
   }
 
   .content-block {
-    width: min(58vw, 58rem);
+    width: var(--content-width);
     margin-left: var(--content-start);
   }
 
-  .intro-stack {
-    width: 250px;
-    margin-left: clamp(190px, 21vw, 320px);
-  }
-
   .content-section-intro .profile-orb {
-    margin-left: 0;
     margin-top: 0;
-    justify-self: start;
   }
 
   .intro-caption {
     width: 250px;
-    margin: 100px 0 0;
+    margin-top: 0;
+  }
+
+  .intro-contact {
+    width: 250px;
   }
 }
 
@@ -372,6 +392,7 @@ button {
     --nav-width: 0px;
     --nav-gap: 0px;
     --content-start: 0px;
+    --content-width: 100%;
     --intro-start: 0px;
   }
 
@@ -397,16 +418,15 @@ button {
 
   .content-section {
     gap: 16px;
-    padding: 88px 0 36px;
+    padding: 62px 0 62px;
+  }
+
+  .content-section-intro {
+    padding-top: 168px;
   }
 
   .content-block {
     width: 100%;
-    margin-left: 0;
-  }
-
-  .intro-stack {
-    width: 240px;
     margin-left: 0;
   }
 
@@ -417,8 +437,12 @@ button {
 
   .intro-caption {
     width: 240px;
-    margin: 12px 0 0 0;
+    margin: 0;
     font-size: 0.92rem;
+  }
+
+  .intro-contact {
+    width: 240px;
   }
 
   .profile-orb {
