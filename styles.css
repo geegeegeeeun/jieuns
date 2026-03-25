@@ -311,8 +311,8 @@ button {
   text-decoration: none;
 }
 
-.publication-link:hover,
-.publication-link:focus-visible {
+.publication-link[href]:hover,
+.publication-link[href]:focus-visible {
   cursor: pointer;
 }
 
