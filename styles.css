@@ -12,7 +12,10 @@
   --shell-left: calc((100vw - var(--shell-width)) / 2);
   --left-offset: 40px;
   --top-offset: 68px;
+  --nav-width: 280px;
+  --nav-gap: 56px;
   --content-start: clamp(340px, 29vw, 500px);
+  --intro-start: calc(var(--left-offset) + var(--nav-width) + var(--nav-gap));
 }
 
 * {
@@ -73,6 +76,7 @@ button {
   position: absolute;
   top: var(--top-offset);
   left: var(--left-offset);
+  width: var(--nav-width);
   padding: 0;
   z-index: 5;
 }
@@ -151,6 +155,7 @@ button {
   line-height: 0.9;
   letter-spacing: -0.06em;
   font-weight: 400;
+  white-space: nowrap;
   cursor: pointer;
   opacity: 0.38;
   transition: opacity 180ms ease;
@@ -195,18 +200,18 @@ button {
   align-items: start;
   justify-items: stretch;
   padding-top: 0;
+  padding-left: var(--intro-start);
 }
 
 .intro-stack {
   width: 250px;
-  margin-left: var(--content-start);
+  margin-left: var(--intro-start);
   align-self: start;
   justify-self: start;
 }
 
 .content-section-intro .profile-orb {
-  margin-left: 0;
-  margin-top: 0;
+  margin: 0;
   align-self: start;
   justify-self: start;
 }
@@ -217,7 +222,7 @@ button {
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: -0.04em;
-  line-height: 1;
+  line-height: 0.7;
   text-align: left;
 }
 
@@ -302,7 +307,10 @@ button {
 
 @media (max-width: 980px) {
   :root {
+    --nav-width: 240px;
+    --nav-gap: 40px;
     --content-start: clamp(190px, 21vw, 320px);
+    --intro-start: calc(var(--left-offset) + var(--nav-width) + var(--nav-gap));
   }
 
   .site-name {
@@ -338,7 +346,7 @@ button {
 
   .intro-stack {
     width: 250px;
-    margin-left: var(--content-start);
+    margin-left: clamp(190px, 21vw, 320px);
   }
 
   .content-section-intro .profile-orb {
@@ -361,7 +369,10 @@ button {
   :root {
     --left-offset: 24px;
     --top-offset: 56px;
+    --nav-width: 0px;
+    --nav-gap: 0px;
     --content-start: 0px;
+    --intro-start: 0px;
   }
 
   .site-name {
