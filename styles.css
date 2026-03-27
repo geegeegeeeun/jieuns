@@ -205,7 +205,8 @@ button {
 
 .content-section-intro > .profile-orb,
 .content-section-intro > .intro-caption,
-.content-section-intro > .intro-contact {
+.content-section-intro > .intro-contact,
+.content-section-intro > .intro-social {
   margin-left: var(--intro-start);
   align-self: start;
   justify-self: start;
@@ -239,6 +240,57 @@ button {
 .intro-contact a {
   color: var(--muted);
   text-decoration: none;
+}
+
+.intro-social {
+  width: 250px;
+  margin-bottom: 0;
+  font-size: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.intro-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 180ms ease, transform 180ms ease, opacity 180ms ease;
+}
+
+.intro-social a:hover,
+.intro-social a:focus-visible {
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.intro-social svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.intro-social rect,
+.intro-social circle,
+.intro-social path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.intro-social .instagram-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.intro-social .linkedin-dot {
+  fill: currentColor;
+  stroke: none;
 }
 
 .profile-orb {
@@ -311,13 +363,64 @@ button {
   text-decoration: none;
 }
 
+.publication-link[href] {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.12em;
+  transition: text-decoration-color 180ms ease;
+}
+
 .publication-link[href]:hover,
 .publication-link[href]:focus-visible {
   cursor: pointer;
+  text-decoration-color: currentColor;
 }
 
 .publication-list li + li {
   margin-top: 0.9rem;
+}
+
+.publication-meta {
+  white-space: nowrap;
+}
+
+.publication-archive {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.35rem;
+  text-decoration: none;
+  vertical-align: baseline;
+}
+
+.arxiv-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.02em;
+  padding: 0.08rem 0.34rem 0.12rem;
+  border: 1px solid rgba(179, 27, 27, 0.24);
+  border-radius: 999px;
+  background: rgba(179, 27, 27, 0.08);
+  color: #b31b1b;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.arxiv-logo-ar {
+  font-weight: 500;
+}
+
+.arxiv-logo-xiv {
+  font-weight: 700;
+}
+
+.publication-archive:hover .arxiv-logo,
+.publication-archive:focus-visible .arxiv-logo {
+  transform: translateY(-1px);
+  background: rgba(179, 27, 27, 0.14);
+  border-color: rgba(179, 27, 27, 0.36);
 }
 
 .news-item {
